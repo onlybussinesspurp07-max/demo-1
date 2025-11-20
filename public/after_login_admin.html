@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin — Feedback Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+    <!-- Header -->
+    <header class="bg-white shadow p-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <h1 class="text-xl font-semibold">College Feedback — Admin</h1>
+            <span class="text-sm text-slate-500">Dashboard</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="text-sm text-slate-600">Admin</div>
+            <img src="https://api.dicebear.com/6.x/initials/svg?seed=Admin" alt="avatar" class="w-8 h-8 rounded-full" />
+        </div>
+    </header>
+
+    <main class="flex gap-6 p-6">
+        <!-- Sidebar -->
+        <aside class="sidebar bg-white rounded-lg shadow p-4 h-[80vh] sticky top-6">
+            <nav class="flex flex-col gap-2">
+                <button id="nav-dashboard" class="text-left p-2 rounded hover:bg-slate-50">Dashboard</button>
+                <button id="nav-departments" class="text-left p-2 rounded hover:bg-slate-50">Departments</button>
+                <button id="nav-reports" class="text-left p-2 rounded hover:bg-slate-50">Reports</button>
+                <button id="nav-settings" class="text-left p-2 rounded hover:bg-slate-50">Settings</button>
+            </nav>
+
+            <hr class="my-4" />
+            <div class="text-sm text-slate-600">Quick actions</div>
+            <div class="mt-2 flex flex-col gap-2">
+                <button id="export-csv" class="px-3 py-2 bg-indigo-600 text-white rounded">Export CSV</button>
+                <button id="generate-report" class="px-3 py-2 border border-slate-200 rounded">Generate Summary</button>
+            </div>
+        </aside>
+
+        <!-- Content area -->
+        <section class="flex-1">
+            <!-- Dashboard page -->
+            <div id="page-dashboard" class="page bg-white rounded-lg shadow p-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold">Overview</h2>
+                    <div class="text-sm text-slate-500">Last updated: <span id="last-updated">--</span></div>
+                </div>
+
+                <!-- Summary cards -->
+                <div class="grid grid-cols-4 gap-4 mt-4">
+                    <div class="p-4 bg-white border rounded shadow-sm">
+                        <div class="text-sm text-slate-500">Departments</div>
+                        <div id="card-departments" class="text-2xl font-bold">0</div>
+                    </div>
+                    <div class="p-4 bg-white border rounded shadow-sm">
+                        <div class="text-sm text-slate-500">Teachers</div>
+                        <div id="card-teachers" class="text-2xl font-bold">0</div>
+                    </div>
+                    <div class="p-4 bg-white border rounded shadow-sm">
+                        <div class="text-sm text-slate-500">Feedbacks</div>
+                        <div id="card-feedbacks" class="text-2xl font-bold">0</div>
+                    </div>
+                    <div class="p-4 bg-white border rounded shadow-sm">
+                        <div class="text-sm text-slate-500">Avg. Rating</div>
+                        <div id="card-avg" class="text-2xl font-bold">-</div>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="grid grid-cols-2 gap-4 mt-6">
+                    <div class="p-4 bg-white border rounded shadow-sm">
+                        <h3 class="font-medium mb-2">Department-wise Avg Rating</h3>
+                        <canvas id="deptChart" height="200"></canvas>
+                    </div>
+                    <div class="p-4 bg-white border rounded shadow-sm">
+                        <h3 class="font-medium mb-2">Monthly Feedback Trend</h3>
+                        <canvas id="trendChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Departments page -->
+            <div id="page-departments" class="page hidden bg-white rounded-lg shadow p-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold">Departments</h2>
+                    <div class="flex items-center gap-2">
+                        <select id="select-department" class="border px-3 py-2 rounded">
+                            <option value="">-- Select Department --</option>
+                        </select>
+                        <input id="search-teacher" placeholder="Search teacher..." class="border px-3 py-2 rounded" />
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100">
+                                <th class="p-2">Name</th>
+                                <th class="p-2">Designation</th>
+                                <th class="p-2">Subject</th>
+                                <th class="p-2">Avg Rating</th>
+                                <th class="p-2">Total Feedback</th>
+                                <th class="p-2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teachers-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Reports page -->
+            <div id="page-reports" class="page hidden bg-white rounded-lg shadow p-6">
+                <h2 class="text-lg font-semibold">Reports</h2>
+                <div class="mt-4 text-sm text-slate-600">Download department-wise summaries or export raw feedback for
+                    offline analysis.</div>
+                <div class="mt-4 grid grid-cols-2 gap-4">
+                    <div class="p-4 border rounded">
+                        <h4 class="font-medium">Download Department Summary</h4>
+                        <select id="report-dept" class="border px-3 py-2 rounded mt-2 w-full">
+                            <option value="">-- Select Department --</option>
+                        </select>
+                        <button id="download-summary" class="mt-3 px-3 py-2 bg-green-600 text-white rounded">Download
+                            PDF</button>
+                    </div>
+                    <div class="p-4 border rounded">
+                        <h4 class="font-medium">Export All Feedback</h4>
+                        <button id="export-all" class="mt-3 px-3 py-2 bg-indigo-600 text-white rounded">Export
+                            CSV</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings page -->
+            <div id="page-settings" class="page hidden bg-white rounded-lg shadow p-6">
+                <h2 class="text-lg font-semibold">Settings</h2>
+                <div class="mt-4">
+                    <label class="block">Role settings (demo)</label>
+                    <div class="mt-2">
+                        <label class="inline-flex items-center gap-2"><input type="checkbox" checked /> HOD
+                            access</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal: Teacher Details -->
+    <div id="modal" class="fixed inset-0 bg-black/30 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow w-full max-w-2xl p-6">
+            <div class="flex items-start justify-between">
+                <h3 id="modal-title" class="text-lg font-semibold">Teacher</h3>
+                <button id="modal-close" class="text-slate-500">Close</button>
+            </div>
+            <div class="mt-4 grid grid-cols-2 gap-4">
+                <div>
+                    <div class="text-sm text-slate-500">Average Rating</div>
+                    <div id="modal-avg" class="text-2xl font-bold mt-1">-</div>
+                    <div class="mt-4 text-sm text-slate-500">Total Feedbacks</div>
+                    <div id="modal-count" class="text-lg font-medium">-</div>
+                </div>
+                <div>
+                    <h4 class="font-medium">Recent Remarks</h4>
+                    <ul id="modal-remarks" class="mt-2 list-disc pl-5 text-sm text-slate-700"></ul>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <label class="block text-sm">Add admin remark</label>
+                <textarea id="admin-remark" class="w-full border p-2 rounded mt-1" rows="3"></textarea>
+                <div class="mt-3 flex justify-end">
+                    <button id="save-remark" class="px-3 py-2 bg-indigo-600 text-white rounded">Save Remark</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/after_login_admin.js"></script>
+</body>
+
+</html>

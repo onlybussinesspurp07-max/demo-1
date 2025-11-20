@@ -1,0 +1,18 @@
+[
+  {
+    "year": "FE",
+    "branch": ["Division A", "Division B", "Division C", "Division D", "Division E", "Division F"]
+  },
+  {
+    "year": "SE",
+    "branch": ["AIML", "CSE A", "CSE B", "IT", "Mech", "ENTC"]
+  },
+  {
+    "year": "TE",
+    "branch": ["AIML", "CSE", "IT", "Mech", "ENTC"]
+  },
+  {
+    "year": "BE",
+    "branch": ["AIML", "CSE", "IT", "Mech", "ENTC"]
+  }
+]

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Nunito:wght@800;900&display=swap"
+    rel="stylesheet">
+  <title>Document</title>
+  <link rel="stylesheet" href="static/css/select.css">
+</head>
+
+<body>
+  <div class="frame">
+    <h1>Select your educational year</h1>
+    <p class="lead">Choose the current year, then pick the department to continue to the feedback form.</p>
+
+    <div class="grid">
+      <!-- Left card: Year -->
+      <div class="card">
+        <h3>Year</h3>
+
+        <!-- Hidden radios -->
+        <input type="radio" name="options" id="option1" checked>
+        <input type="radio" name="options" id="option2">
+        <input type="radio" name="options" id="option3">
+        <input type="radio" name="options" id="option4">
+
+        <!-- Pills wrapper MUST exist -->
+        <div class="pills">
+          <label class="pill" for="option1">B.Tech FE</label>
+          <label class="pill" for="option2">B.Tech SE</label>
+          <label class="pill" for="option3">B.Tech TE</label>
+          <label class="pill" for="option4">B.Tech Final Year</label>
+        </div>
+      </div>
+
+      <!-- Right card: Departments -->
+      <div class="card">
+        <h3>Departments</h3>
+        <ul class="depts">
+
+        </ul>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="continueBtn" disabled>Submit</button>
+    </div>
+    <script src="/static/js/select.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+/* Soft gradient background to match student pages */
+body{
+  background:
+    radial-gradient(1200px 600px at 20% 10%, #ecfeff 0%, transparent 45%),
+    radial-gradient(900px 500px at 90% 80%, #e8ffe6 0%, transparent 50%),
+    #f1f5f9;
+  color:#0f172a;
+}
+
+/* Top bar, sidebar, and pages as separate glass plates */
+header,
+.sidebar,
+#page-dashboard,
+#page-departments,
+#page-reports,
+#page-settings{
+  background:rgba(255,255,255,.9);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:16px;
+  box-shadow:0 1px 0 rgba(15,23,42,.04), 0 10px 30px rgba(15,23,42,.06);
+}
+
+/* Inner “cards” (summary tiles, chart boxes, report boxes) */
+.subplate,
+.p-4.bg-white.border.rounded.shadow-sm,
+.p-4.border.rounded{
+  background:rgba(255,255,255,.75);
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:12px;
+  box-shadow:none;
+}
+
+/* Green CTA buttons and ghost buttons */
+.btn-green,
+.px-3.py-2.bg-indigo-600.text-white.rounded,
+.mt-3.px-3.py-2.bg-green-600.text-white.rounded{
+  background:#16a34a;
+  color:#fff;
+  border:1px solid rgba(22,163,74,.3);
+  border-radius:999px;
+  padding:.55rem 1rem;
+  box-shadow:0 6px 16px rgba(16,185,129,.25);
+}
+.btn-ghost,
+.px-3.py-2.border.border-slate-200.rounded{
+  background:rgba(255,255,255,.6);
+  border:1px solid rgba(15,23,42,.12);
+  border-radius:999px;
+  padding:.55rem 1rem;
+}
+
+/* Table borders and spacing */
+table thead{ background:rgba(241,245,249,.7) }
+table th, table td{ padding:.6rem .5rem; border-bottom:1px solid rgba(15,23,42,.06) }
+
+/* Ensure dashboard charts keep height */
+#page-dashboard canvas{ height:200px }

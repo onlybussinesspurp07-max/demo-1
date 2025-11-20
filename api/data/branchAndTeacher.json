@@ -1,0 +1,32 @@
+[
+    {
+        "SEAIML" : [
+            "Prof. Damre S.S. AI",
+            "Prof. Damre S.S. OE",
+            "Prof. Panchakshari M.C, DM",
+            "Prof. Panchakshari M.C, DS",
+            "Prof. Maka A R, M-III",
+            "Prof. Dr. Halgare N.M, UHV-II",
+            "Prof. Kale S, PE",
+            "Prof. Todkari S, EDC"
+        ]
+    },
+    {
+        "SECSE A" : [
+            "Prof. Tandle S.R, DS",
+            "Prof. Maka A.R, M-III",
+            "Prof. Kokane P.J, EB",
+            "Prof. Patil M.B, OOPS",
+            "Prof. Pathan N.J, DE",
+            "Prof. Dr. Patil M.J, MDM",
+            "Prof. Deshpande A.S, UHV-II",
+            "Prof. Bidve M.P, DM"
+        ]
+    },
+    {
+        "FEDivision A": [
+            "A teacher",
+            "B teacher"
+        ]
+    }
+]

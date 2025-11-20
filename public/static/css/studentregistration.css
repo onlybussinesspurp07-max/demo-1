@@ -1,0 +1,353 @@
+/* =========================
+   Student Registration UI
+   Aligned with login pages
+   ========================= */
+
+/* Base */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: linear-gradient(135deg, #AECBFA, #D2E0FF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 12px;
+  overflow-x: hidden;
+}
+
+/* Tokens */
+:root {
+  --field-w: 460px;
+  /* single source of truth for pill width */
+  --btn-otp-max: 160px;
+  --radius: 22px;
+  --brand: #16BA63;
+}
+
+/* Frame (glass) */
+.login-container {
+  width: min(560px, 92vw);
+  background: rgba(255, 255, 255, .68);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, .65);
+  border-radius: var(--radius);
+  padding: 26px 18px;
+  box-shadow: 0 20px 46px rgba(15, 23, 42, .14), inset 0 1px 0 rgba(255, 255, 255, .8);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Headings */
+.login-container h2 {
+  margin: 4px 0 6px;
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+
+.login-container p {
+  margin: 4px 0;
+  color: #253047;
+}
+
+.login-container p:nth-of-type(2) {
+  margin-bottom: 14px;
+  color: #4b5b73;
+}
+
+/* Form grid */
+.login-container form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  justify-items: center;
+}
+
+/* Inputs (pill) */
+.inp {
+  width: 100%;
+  max-width: var(--field-w);
+  padding: 12px 14px;
+  border: 2px solid var(--brand);
+  border-radius: 25px;
+  background: #fff;
+  color: #0f172a;
+  text-align: center;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.inp:focus {
+  border-color: #00ffaa;
+  box-shadow: 0 0 0 4px rgba(22, 186, 99, .12);
+}
+
+/* Email + Send OTP row, and OTP + Verify row */
+.grid-inline {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  /* input | button */
+  gap: 10px;
+  align-items: center;
+  width: var(--field-w);
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+#email,
+#otp {
+  width: 100% !important;
+  max-width: var(--field-w) !important;
+  min-width: 0;
+}
+
+/* OTP action buttons */
+#sendOtpBtn,
+#verifyOtpBtn {
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 22px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  background: var(--brand);
+  color: #0b1220;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: filter .2s, transform .06s;
+  box-shadow: 0 8px 24px rgba(22, 186, 99, .28);
+  white-space: nowrap;
+  max-width: var(--btn-otp-max);
+}
+
+#sendOtpBtn:hover,
+#verifyOtpBtn:hover {
+  filter: brightness(.95);
+}
+
+#sendOtpBtn:active,
+#verifyOtpBtn:active {
+  transform: translateY(1px);
+}
+
+/* Primary actions */
+button.cta {
+  height: 46px;
+  min-width: 180px;
+  padding: 0 18px;
+  border-radius: 25px;
+  border: 1px solid rgba(0, 0, 0, .3);
+  background: var(--brand);
+  color: #0b1220;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 28px rgba(22, 186, 99, .30);
+  transition: filter .2s, transform .06s;
+}
+
+button.cta:hover {
+  filter: brightness(.93);
+}
+
+button.cta:active {
+  transform: translateY(1px);
+}
+
+/* Links */
+#new-reg,
+a {
+  color: #1f2937;
+  text-decoration: none;
+}
+
+#new-reg:hover,
+a:hover {
+  text-decoration: underline;
+}
+
+/* Divider (optional) */
+hr.soft {
+  height: 1px;
+  border: 0;
+  background: rgba(0, 0, 0, .06);
+  width: min(var(--field-w), 100%);
+  margin: 8px auto;
+}
+
+/* Responsive */
+@media (max-width: 820px) {
+  .login-container {
+    width: min(600px, 94vw);
+    padding: 22px 16px;
+  }
+
+  :root {
+    --field-w: 440px;
+  }
+}
+
+@media (max-width: 560px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .login-container {
+    width: min(480px, 94vw);
+    border-radius: 20px;
+  }
+
+  .login-container form {
+    gap: 10px;
+  }
+
+  /* Keep inline rows on phones, but they adapt to field width above */
+  :root {
+    --field-w: 100%;
+  }
+
+  /* If you want to stack on ultra-narrow only, keep next rule */
+}
+
+@media (max-width: 360px) {
+
+  /* Only here we stack the inline rows to prevent overflow */
+  .grid-inline {
+    grid-template-columns: 1fr;
+  }
+
+  #sendOtpBtn,
+  #verifyOtpBtn {
+    width: 100%;
+    justify-self: center;
+  }
+
+  .login-container {
+    padding: 18px 12px;
+  }
+
+  .inp {
+    padding: 11px;
+    font-size: 14px;
+  }
+
+  button.cta {
+    height: 44px;
+    font-size: 14px;
+  }
+}
+
+
+/* ===== Final, clean alignment for Registration ===== */
+
+/* Desktop width token (change once to tweak all pills) */
+:root {
+  --reg-field-w: 460px;
+  --reg-otp-btn-max: 160px;
+}
+
+/* Base safeguards */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* All input pills use the same width and center */
+.inp {
+  max-width: var(--reg-field-w) !important;
+  margin-inline: auto;
+}
+
+/* Form grid keeps items centered */
+.login-container form {
+  justify-items: center;
+}
+
+/* Inline rows for Email/OTP — match pill width and center */
+.grid-inline {
+  width: var(--reg-field-w) !important;
+  max-width: 100%;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto;
+  /* input | button on desktop */
+  gap: 10px;
+  align-items: center;
+}
+
+/* Inputs inside the inline rows must never stretch the row */
+#email,
+#otp {
+  width: 100% !important;
+  max-width: var(--reg-field-w) !important;
+  min-width: 0 !important;
+}
+
+/* OTP action buttons stay compact and never push the input */
+#sendOtpBtn,
+#verifyOtpBtn {
+  max-width: var(--reg-otp-btn-max) !important;
+  padding: 0 16px !important;
+  white-space: nowrap !important;
+}
+
+/* Keep spacing consistent below inline rows */
+.grid-inline+.inp {
+  margin-top: 10px;
+}
+
+/* ------- Responsive behavior kept neat ------- */
+
+/* Tablets and up: force inline layout exactly */
+@media (min-width: 561px) {
+  .grid-inline {
+    grid-template-columns: 1fr auto !important;
+  }
+
+  :root {
+    --reg-field-w: 460px;
+  }
+
+  /* desktop pill width */
+}
+
+/* Phones: keep inline look, but field width adapts to container */
+@media (max-width: 560px) {
+  :root {
+    --reg-field-w: 100%;
+  }
+
+  /* pills take full available width */
+  .grid-inline {
+    width: 100% !important;
+  }
+}
+
+/* Ultra‑small phones only: stack to avoid overflow */
+@media (max-width: 360px) {
+  .grid-inline {
+    grid-template-columns: 1fr !important;
+  }
+
+  #sendOtpBtn,
+  #verifyOtpBtn {
+    width: 100% !important;
+    justify-self: center;
+  }
+}

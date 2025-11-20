@@ -1,0 +1,582 @@
+/* =========================
+   Profile Page – Full CSS
+   ========================= */
+
+/* Theme */
+:root {
+    --bg-start: #e0ebff;
+    --bg-end: #eafaf1;
+    --card: #f8fbff;
+    --muted: #5a789a;
+    --title: #253045;
+    --primary: #32c175;
+    --primary-soft: #b7e9d2;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    background-image: url("/static/images/background1.webp"); /* your image path */
+    background-size: cover;           /* fills screen without distortion */
+    background-position: center;      /* keeps main part of image visible */
+    background-repeat: no-repeat;     /* prevents tiling */
+    background-attachment: fixed;     /* nice effect on desktop */
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', 'Nunito', system-ui, Arial, sans-serif;
+    /* background: linear-gradient(135deg, #3d9cd3, #d6e9ea); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #22324a;
+    padding: 20px 12px;
+}
+
+/* Frame */
+.profile-frame {
+    width: min(820px, 92vw);
+    background: var(--card);
+    border-radius: 28px;
+    padding: 36px 28px 88px;
+    /* extra bottom for logout button */
+    box-shadow: 0 8px 40px rgba(50, 155, 90, .08), 0 1.5px 6px rgba(46, 170, 255, .09);
+    position: relative;
+}
+
+/* Header */
+h4 {
+    margin: 0 0 8px 0;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--title);
+    letter-spacing: .3px;
+}
+
+.subtitle {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1rem;
+}
+
+/* Row layout for header block (kept for consistency) */
+.row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+/* Pill label */
+#education_detail {
+    display: inline-block;
+    background: #eef4fc;
+    border: 2px solid transparent;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+    color: #226b42;
+    min-width: 140px;
+    min-height: 22px;
+    /* stable height pre-JS */
+    box-shadow: 0 .5px 6px rgba(34, 174, 55, .06);
+    margin-right: 12px;
+    /* space before the Change button on wide screens */
+}
+
+/* Actions area holds all three buttons */
+.actions {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 16px;
+}
+
+/* Buttons base */
+.btn {
+    appearance: none;
+    border: none;
+    border-radius: 28px;
+    padding: 12px 22px;
+    font-size: 1.04rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .18s ease-in-out;
+    box-shadow: 0 2px 12px rgba(50, 193, 117, .12);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+/* Variants */
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    filter: brightness(.96);
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+}
+
+.btn-ghost {
+    background: #f7fafe;
+    color: #259055;
+    border: 2px solid #dff3ea;
+    box-shadow: 0 .5px 6px rgba(34, 174, 55, .08);
+}
+
+.btn-ghost:hover {
+    background: #eef8f3;
+}
+
+.btn-danger {
+    background: #ffebee;
+    color: #c62828;
+    border: 2px solid #ffcdd2;
+    box-shadow: none;
+}
+
+.btn-danger:hover {
+    background: #ffe3e6;
+}
+
+/* ---------- Layout rules with your existing HTML structure ---------- */
+/* Keep label and the first action button on the same row on wide screens */
+@media (min-width: 641px) {
+
+    /* Place the first button immediately to the right of the label */
+    #education_detail+.actions>.btn:nth-of-type(1) {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 12px;
+    }
+
+    /* Make the label and first button share the same line */
+    #education_detail {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* After the inline pair, push a full-width line break so next buttons center under them */
+    /* Achieved by forcing grid to start next items on new rows */
+    .actions {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+}
+
+/* Center “Give Survey” below the first row */
+.actions>.btn:nth-of-type(2) {
+    min-width: 220px;
+}
+
+/* Pin “Log Out” to the bottom inside the plate */
+.actions>.btn:nth-of-type(3) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    width: min(260px, 82%);
+}
+
+/* Small screens: stack everything nicely */
+@media (max-width:640px) {
+    #education_detail {
+        margin-right: 0;
+        display: block;
+    }
+
+    .actions>.btn:nth-of-type(1) {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .actions>.btn:nth-of-type(3) {
+        width: 86%;
+    }
+}
+
+/* ===== Responsive add-ons: Profile page ===== */
+
+/* 1) Frame and typography scaling */
+@media (max-width: 1024px) {
+    .profile-frame {
+        width: min(860px, 94vw);
+        padding: 28px 20px 84px;
+        /* keep extra bottom for logout */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+
+    .profile-frame {
+        width: min(740px, 94vw);
+        padding: 24px 16px 80px;
+        border-radius: 24px;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    .subtitle {
+        font-size: .95rem;
+    }
+}
+
+/* 2) Keep label + first button inline on wide, stack cleanly on mobile */
+@media (min-width: 641px) {
+    .row {
+        align-items: baseline;
+    }
+}
+
+@media (max-width: 640px) {
+    #education_detail {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .actions {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .actions>.btn:nth-of-type(1),
+    .actions>.btn:nth-of-type(2) {
+        width: 100%;
+    }
+}
+
+/* 3) Pill and buttons scale for small phones */
+@media (max-width: 480px) {
+    #education_detail {
+        padding: 10px 14px;
+        font-size: .95rem;
+        border-radius: 999px;
+    }
+
+    .btn {
+        padding: 11px 16px;
+        font-size: .98rem;
+        border-radius: 24px;
+    }
+}
+
+/* 4) Safe placement for the pinned logout button */
+.actions>.btn:nth-of-type(3) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    width: min(260px, 82%);
+}
+
+@media (max-width: 640px) {
+
+    /* Unpin on mobile to prevent overlap with short viewports */
+    .actions>.btn:nth-of-type(3) {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin-top: 6px;
+    }
+
+    /* Add breathing room at bottom so content never hits device bars */
+    .profile-frame {
+        padding-bottom: 24px;
+    }
+}
+
+/* 5) Touch targets and wrapping safety */
+@media (max-width: 768px) {
+
+    button,
+    .btn,
+    #education_detail {
+        min-height: 44px;
+    }
+
+    .row {
+        gap: 12px;
+    }
+}
+
+/* 6) Ultra-small devices */
+@media (max-width: 360px) {
+    .btn {
+        padding: 10px 14px;
+        font-size: .95rem;
+    }
+
+    #education_detail {
+        font-size: .9rem;
+    }
+}
+
+/* ===== Hotfix: profile mobile overflow ===== */
+
+/* 1) Make the card a proper containing block and prevent child overflow */
+@media (max-width: 768px) {
+    .profile-frame {
+        max-width: 96vw;
+        /* tighter than 92 to account for inner padding */
+        overflow: hidden;
+        /* clip any shadow overflow */
+        padding: 20px 14px 24px;
+        /* reduce inner padding on phones */
+        border-radius: 22px;
+    }
+}
+
+/* 2) Stack actions and force in-card widths */
+@media (max-width: 768px) {
+    .actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        justify-items: stretch;
+        /* buttons fill available width */
+        margin-top: 12px;
+    }
+
+    /* All action buttons become full-width but constrained by the card */
+    .actions .btn {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Unpin the logout button on mobile so it doesn't overflow the bottom */
+    .actions>.btn:nth-of-type(3) {
+        position: static !important;
+        transform: none !important;
+        bottom: auto !important;
+    }
+}
+
+/* 3) Clamp button height/padding so they aren't too tall on small phones */
+@media (max-width: 420px) {
+    .btn {
+        padding: 12px 14px;
+        border-radius: 20px;
+        font-size: 15px;
+    }
+}
+
+/* 4) Education pill should never exceed card width */
+@media (max-width: 768px) {
+    #education_detail {
+        width: 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+}
+
+/* 5) Prevent horizontal scroll caused by shadows/rounding on ultra-small */
+@media (max-width: 360px) {
+    .profile-frame {
+        max-width: 98vw;
+        padding: 18px 12px;
+    }
+}
+
+/* ===== Fix: center title and group control row ===== */
+
+/* Center the title block and give breathing room */
+.container {
+    max-width: 1100px;
+    margin: 28px auto;
+    padding: 18px 16px;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 28px rgba(30, 64, 110, .15);
+}
+
+/* Create a virtual controls row using CSS only */
+.container {
+    background: var(--card);
+    display: grid;
+    justify-items: center;
+    row-gap: 14px;
+}
+
+/* Title: use your page title style, centered */
+.header-left {
+    display: none;
+}
+
+/* not used in this page */
+h1,
+.page-title {
+    margin: 0;
+    text-align: center;
+    font-weight: 800;
+    font-size: clamp(22px, 3.6vw, 38px);
+    color: #1b2135;
+}
+
+/* Controls row: label + select + buttons neatly aligned */
+.form-actions {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: 18px;
+    align-items: center;
+    
+}
+
+/* Inputs and buttons look consistent */
+label[for="teacherSelect"] {
+    font-weight: 700;
+    color: #2b3347;
+    margin-right: 4px;
+}
+
+#teacherSelect {
+    height: 40px;
+    border-radius: 999px;
+    padding: 0 100px;
+    border: 1px solid #e7edf6;
+    background: #fff;
+}
+
+.btn {
+    appearance: none;
+    border: 1px solid #e7edf6;
+    border-radius: 999px;
+    padding: 10px 14px;
+    cursor: pointer;
+    background: #f2f6fb;
+    box-shadow: 0 6px 14px rgba(40, 60, 120, .06);
+}
+
+.btn-primary {
+    background: linear-gradient(180deg, #2fe07f 0%, #18c96a 100%);
+    border: 0;
+    color: #fff;
+}
+
+.btn-sec {
+    background: #f2f6fb;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.btn-ter {
+    background: #fff;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+/* Make “a” inside buttons not break layout */
+.btn a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Wrap controls on smaller screens; widen tap targets */
+@media (max-width: 860px) {
+    .form-actions {
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    #teacherSelect {
+        width: min(360px, 92vw);
+    }
+
+    .btn {
+        width: min(260px, 80vw);
+    }
+}
+
+/* Prevent any horizontal scroll and keep card inside viewport */
+html,
+body {
+    overflow-x: hidden;
+}
+
+/* ===== Mobile plate size tweak ===== */
+@media (max-width: 520px) {
+    .container {
+        width: min(520px, 90vw);
+        /* narrower than viewport to reveal edges */
+        padding: 16px 14px;
+        /* tighter inner spacing */
+        border-radius: 18px;
+        /* slightly smaller radius for balance */
+    }
+
+    /* Make controls match the narrower plate */
+    #teacherSelect {
+        width: min(360px, 86vw);
+    }
+
+    .btn {
+        width: min(260px, 80vw);
+    }
+}
+
+/* Ultra-small phones */
+@media (max-width: 360px) {
+    .container {
+        width: 88vw;
+        padding: 14px 12px;
+        border-radius: 16px;
+    }
+}
+
+/* === Fix: Proper responsive width for teacher input field === */
+
+@media (max-width: 860px) {
+    .form-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    #teacherSelect {
+        width: 100% !important;
+        max-width: 320px;
+        box-sizing: border-box;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+    #teacherSelect {
+        max-width: 280px;
+    }
+}

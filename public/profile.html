@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Nunito:wght@800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/profile.css">
+</head>
+
+<body>
+  <div class="profile-frame">
+    <div class="row">
+      <div>
+        <h4>Educational Year and Branch:</h4>
+        <p class="subtitle">Please Check branch and Educational year properly. Once feedback is submitted, you can't give it again :D</p>
+      </div>
+    </div>
+
+    <label id="education_detail" placeholder="Select your educational year and branch"></label>
+
+    <div class="actions">
+      <button class="btn btn-ghost" onclick="location.href='/select'">Change Educational Year</button>
+      <button class="btn btn-primary" id="giveFeedbackBtn">Give Feedback</button>
+      <button id="logOutBtn" class="btn btn-danger">Log Out</button>
+    </div>
+  </div>
+
+  <script src="/static/js/profile.js"></script>
+</body>
+
+</html>

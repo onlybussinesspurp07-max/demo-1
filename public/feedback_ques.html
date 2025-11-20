@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Teacher Feedback</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/feedback_ques.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="brand">SY AIML Feedback</h1>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            <section class="card" aria-labelledby="page-title">
+                <header class="card__header">
+                    <h2 id="page-title" class="card__title">
+                        <span id="teacherName">Selected Teacher</span>
+                    </h2>
+                    <p class="card__subtitle">
+                        1 = Below Average, 2 = Average, 3 = Good, 4 = Very Good, 5 = Excellent
+                    </p>
+                </header>
+
+                <form id="ratings_form" novalidate>
+                    <!-- Reusable question row: 10 items -->
+                    <fieldset class="question">
+                        <legend class="question-text">1. Regularity &amp; punctuality in the class</legend>
+                        <div class="ratings" role="radiogroup" aria-label="Regularity and punctuality">
+                            <label><input type="radio" name="q1" value="1"><span>1</span></label>
+                            <label><input type="radio" name="q1" value="2"><span>2</span></label>
+                            <label><input type="radio" name="q1" value="3"><span>3</span></label>
+                            <label><input type="radio" name="q1" value="4"><span>4</span></label>
+                            <label><input type="radio" name="q1" value="5"><span>5</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="question">
+                        <legend class="question-text">2. Self-confidence, preparation &amp; subject knowledge</legend>
+                        <div class="ratings" role="radiogroup" aria-label="Preparation and knowledge">
+                            <label><input type="radio" name="q2" value="1"><span>1</span></label>
+                            <label><input type="radio" name="q2" value="2"><span>2</span></label>
+                            <label><input type="radio" name="q2" value="3"><span>3</span></label>
+                            <label><input type="radio" name="q2" value="4"><span>4</span></label>
+                            <label><input type="radio" name="q2" value="5"><span>5</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="question">
+                        <legend class="question-text">3. Presentation, explanation &amp; communication skills</legend>
+                        <div class="ratings" role="radiogroup" aria-label="Presentation and communication">
+                            <label><input type="radio" name="q3" value="1"><span>1</span></label>
+                            <label><input type="radio" name="q3" value="2"><span>2</span></label>
+                            <label><input type="radio" name="q3" value="3"><span>3</span></label>
+                            <label><input type="radio" name="q3" value="4"><span>4</span></label>
+                            <label><input type="radio" name="q3" value="5"><span>5</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="question">
+                        <legend class="question-text">4. Teaching methodology: interaction, motivation, use of aids
+                        </legend>
+                        <div class="ratings" role="radiogroup" aria-label="Teaching methodology">
+                            <label><input type="radio" name="q4" value="1"><span>1</span></label>
+                            <label><input type="radio" name="q4" value="2"><span>2</span></label>
+                            <label><input type="radio" name="q4" value="3"><span>3</span></label>
+                            <label><input type="radio" name="q4" value="4"><span>4</span></label>
+                            <label><input type="radio" name="q4" value="5"><span>5</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="question">
+                        <legend class="question-text">5. Helps students in realizing career goals</legend>
+                        <div class="ratings" role="radiogroup" aria-label="Career guidance">
+                            <label><input type="radio" name="q5" value="1"><span>1</span></label>
+                            <label><input type="radio" name="q5" value="2"><span>2</span></label>
+                            <label><input type="radio" name="q5" value="3"><span>3</span></label>
+                            <label><input type="radio" name="q5" value="4"><span>4</span></label>
+                            <label><input type="radio" name="q5" value="5"><span>5</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="question">
+                        <legend class="question-text">6. Attention towards slow learners</legend>
+                        <div class="ratings" role="radiogroup" aria-label="Support for slow learners">
+                            <label><input type="radio" name="q6" value="1"><span>1</span></label>
+                            <label><input type="radio" name="q6" value="2"><span>2</span></label>
+                            <label><input type="radio" name="q6" value="3"><span>3</span></label>
+                            <label><input type="radio" name="q6" value="4"><span>4</span></label>
+                            <label><input type="radio" name="q6" value="5"><span>5</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="question">
+                        <legend class="question-text">7. Inspires students for ethical conduct</legend>
+                        <div class="ratings" role="radiogroup" aria-label="Ethical conduct">
+                            <label><input type="radio" name="q7" value="1"><span>1</span></label>
+                            <label><input type="radio" name="q7" value="2"><span>2</span></label>
+                            <label><input type="radio" name="q7" value="3"><span>3</span></label>
+                            <label><input type="radio" name="q7" value="4"><span>4</span></label>
+                            <label><input type="radio" name="q7" value="5"><span>5</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="question">
+                        <legend class="question-text">8. Easily accessible &amp; helpful to students</legend>
+                        <div class="ratings" role="radiogroup" aria-label="Accessibility and helpfulness">
+                            <label><input type="radio" name="q8" value="1"><span>1</span></label>
+                            <label><input type="radio" name="q8" value="2"><span>2</span></label>
+                            <label><input type="radio" name="q8" value="3"><span>3</span></label>
+                            <label><input type="radio" name="q8" value="4"><span>4</span></label>
+                            <label><input type="radio" name="q8" value="5"><span>5</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="question">
+                        <legend class="question-text">9. Course material &amp; additional resources are helpful</legend>
+                        <div class="ratings" role="radiogroup" aria-label="Course materials helpfulness">
+                            <label><input type="radio" name="q9" value="1"><span>1</span></label>
+                            <label><input type="radio" name="q9" value="2"><span>2</span></label>
+                            <label><input type="radio" name="q9" value="3"><span>3</span></label>
+                            <label><input type="radio" name="q9" value="4"><span>4</span></label>
+                            <label><input type="radio" name="q9" value="5"><span>5</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="question">
+                        <legend class="question-text">10. Practical session interaction</legend>
+                        <div class="ratings" role="radiogroup" aria-label="Practical session interaction">
+                            <label><input type="radio" name="q10" value="1"><span>1</span></label>
+                            <label><input type="radio" name="q10" value="2"><span>2</span></label>
+                            <label><input type="radio" name="q10" value="3"><span>3</span></label>
+                            <label><input type="radio" name="q10" value="4"><span>4</span></label>
+                            <label><input type="radio" name="q10" value="5"><span>5</span></label>
+                        </div>
+                    </fieldset>
+                    <div class="input-group">
+                        <label for="feedback">Your feedback</label>
+                        <textarea id="feedback" name="feedback" rows="6"
+                            placeholder="Type your message here..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="submit-btn" class="btn btn-primary">Submit feedback</button>
+                        <button type="button" id="cancel_btn" class="btn btn-ghost">Back</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <script src="/static/js/feedback_ques.js"></script>
+</body>
+
+</html>

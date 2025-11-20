@@ -1,0 +1,148 @@
+:root {
+  --card: #f8fbff;
+  --muted: #5a789a;
+  --title: #253045;
+  --primary: #32c175;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: 'Inter', 'Nunito', system-ui, Arial, sans-serif;
+
+  background-image: url("/static/images/background1.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #22324a;
+  padding: 20px 12px;
+}
+
+/* Main frame */
+.profile-frame {
+  width: min(820px, 92vw);
+  background: var(--card);
+  border-radius: 28px;
+  padding: 36px 28px 100px;
+  box-shadow: 0 8px 40px rgba(50, 155, 90, .08),
+              0 1.5px 6px rgba(46, 170, 255, .09);
+  position: relative;
+}
+
+/* Typography */
+h4 {
+  margin: 0 0 8px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--title);
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* Layout */
+.row {
+  margin-bottom: 14px;
+}
+
+/* Education pill */
+#education_detail {
+  display: inline-block;
+  background: #eef4fc;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #226b42;
+  min-height: 22px;
+  box-shadow: 0 .5px 6px rgba(34, 174, 55, .06);
+  margin-bottom: 12px;
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn {
+  border: none;
+  border-radius: 28px;
+  padding: 12px 32px;
+  font-size: 1.04rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.18s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* Variants */
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover { filter: brightness(0.96); }
+
+.btn-ghost {
+  background: #f7fafe;
+  color: #259055;
+  border: 2px solid #dff3ea;
+}
+
+.btn-danger {
+  background: #ffebee;
+  color: #c62828;
+  border: 2px solid #ffcdd2;
+}
+
+/* Logout button pinned bottom (desktop only) */
+.btn-danger {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  width: min(260px, 82%);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  #education_detail {
+    width: 100%;
+  }
+
+  .btn-danger {
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+
+  .profile-frame {
+    padding-bottom: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  #education_detail { font-size: .95rem; }
+  .btn { font-size: .98rem; }
+}
+
+@media (max-width: 360px) {
+  .btn { font-size: .92rem; padding: 10px 14px; }
+  #education_detail { font-size: .9rem; }
+}

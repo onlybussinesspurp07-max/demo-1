@@ -1,0 +1,485 @@
+:root {
+    --page-bg-start: #e7f0ff;
+    --page-bg-end: #d8e6ff;
+    --card: #f5f9ff;
+    --text: #0f172a;
+    --muted: #475569;
+    --border: #e6eefb;
+    --ring: #7cc4ff;
+
+    --primary: #22c55e;
+    --primary-600: #16a34a;
+    --primary-glow: 0 10px 20px rgba(34, 197, 94, .25);
+
+    --radius-card: 22px;
+    --radius-field: 14px;
+
+    --s1: 4px;
+    --s2: 8px;
+    --s3: 12px;
+    --s4: 16px;
+    --s5: 20px;
+    --s6: 24px;
+    --s8: 32px;
+    --s10: 40px;
+    --s12: 48px;
+    --h1: clamp(26px, 3.2vw, 36px);
+    --h2: clamp(18px, 2.2vw, 24px);
+    --label: 14px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    background-image: url("/static/images/background1.webp"); /* your image path */
+    background-size: cover;           /* fills screen without distortion */
+    background-position: center;      /* keeps main part of image visible */
+    background-repeat: no-repeat;     /* prevents tiling */
+    background-attachment: fixed;     /* nice effect on desktop */
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    line-height: 1.5;
+    /* background: linear-gradient(135deg, #3d9cd3, #d6e9ea); */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.container {
+    width: min(1100px, 65vw);
+    margin-inline: auto
+}
+
+.site-header {
+    text-align: center;
+    padding: clamp(var(--s8), 5vw, var(--s12)) 0 var(--s10);
+}
+
+.brand {
+    margin: 0;
+    font-size: var(--h1);
+    font-weight: 800;
+    letter-spacing: .3px;
+    text-shadow: 0 2px 0 rgba(255, 255, 255, .6);
+}
+
+.site-main {
+    padding-bottom: var(--s12)
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    box-shadow: 0 12px 30px rgba(21, 94, 239, 0.06), 0 4px 10px rgba(15, 23, 42, 0.05);
+    padding: clamp(var(--s8), 4vw, var(--s12));
+}
+
+.card__header {
+    margin-bottom: var(--s6)
+}
+
+.card__title {
+    font-size: var(--h2);
+    margin: 0 0 var(--s1)
+}
+
+.card__subtitle {
+    margin: 0;
+    color: var(--muted);
+    font-size: var(--label)
+}
+
+/* Form layout */
+#ratings_form {
+    display: grid;
+    gap: var(--s6)
+}
+
+.question {
+    display: grid;
+    gap: var(--s3);
+    padding: var(--s4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-field);
+    background: #ffffff;
+}
+
+@media (min-width: 760px) {
+    .question {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center
+    }
+}
+
+.question-text {
+    font-size: 16px;
+    margin: 0
+}
+
+/* Ratings as pill radios */
+.ratings {
+    display: flex;
+    gap: var(--s3);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.ratings label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: #f9fbff;
+    cursor: pointer;
+    transition: background .2s, border-color .2s, box-shadow .2s, transform .04s;
+}
+
+.ratings input[type="radio"] {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #94a3b8;
+    /* slate-400 */
+    outline: none;
+    margin: 0;
+    display: inline-block;
+    position: relative;
+}
+
+.ratings input[type="radio"]:checked {
+    border-color: var(--primary);
+    background: radial-gradient(circle at 50% 50%, var(--primary) 0 45%, transparent 46% 100%);
+}
+
+.ratings label:hover {
+    background: #f3f7ff
+}
+
+/* Keyboard focus */
+.ratings input[type="radio"]:focus-visible {
+    box-shadow: 0 0 0 4px rgba(124, 196, 255, .35);
+}
+
+/* Actions */
+.form-actions {
+    display: flex;
+    gap: var(--s4);
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: var(--s2);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn {
+    font: inherit;
+    border: 0;
+    border-radius: 999px;
+    padding: var(--s4) var(--s8);
+    cursor: pointer;
+    transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.btn-primary {
+    color: #fff;
+    background: linear-gradient(180deg, var(--primary), var(--primary-600));
+    box-shadow: var(--primary-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px)
+}
+
+.btn-primary:active {
+    transform: translateY(0)
+}
+
+.btn-ghost {
+    color: var(--muted);
+    background: #ffffff;
+    border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+    background: #f7fbff
+}
+
+.btn-next {
+    background: #ffffff;
+}
+
+/* ===== Responsive add-ons: Teacher Feedback (append at end) ===== */
+
+/* 1) Container and type scaling */
+@media (max-width: 1024px) {
+    .container {
+        width: min(1100px, 94vw);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+
+    .brand {
+        font-size: clamp(22px, 6vw, 28px);
+    }
+}
+
+/* 2) Card and header spacing on small screens */
+@media (max-width: 768px) {
+    .site-header {
+        padding: clamp(var(--s6), 6vw, var(--s10)) 0 var(--s4);
+    }
+
+    .site-main {
+        padding-bottom: var(--s10);
+    }
+
+    .card {
+        padding: clamp(var(--s6), 5vw, var(--s10));
+        border-radius: calc(var(--radius-card) - 4px);
+    }
+
+    .card__header {
+        margin-bottom: var(--s4);
+    }
+
+    .card__title {
+        font-size: clamp(18px, 4.6vw, 22px);
+    }
+
+    .card__subtitle {
+        font-size: 13px;
+    }
+}
+
+/* 3) Question rows become single-column; radios wrap neatly */
+@media (max-width: 760px) {
+    .question {
+        grid-template-columns: 1fr !important;
+        /* override desktop split */
+        gap: var(--s3);
+        padding: var(--s3);
+    }
+
+    .question-text {
+        font-size: 15px;
+    }
+
+    .ratings {
+        gap: var(--s2);
+        row-gap: var(--s3);
+        flex-wrap: wrap;
+    }
+
+    .ratings label {
+        padding: 8px 12px;
+        border-radius: 999px;
+    }
+
+    .ratings input[type="radio"] {
+        width: 13px;
+        height: 13px;
+    }
+}
+
+/* 4) Actions: stack and full-width on tiny screens */
+@media (max-width: 640px) {
+    .form-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--s3);
+        margin-top: var(--s4);
+    }
+
+    .btn {
+        padding: 12px 18px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+        min-width: clamp(160px, 48vw, 220px);
+    }
+}
+
+@media (max-width: 420px) {
+    .btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+        min-width: 100%;
+    }
+}
+
+/* 5) Touch target and overflow safety */
+@media (max-width: 768px) {
+
+    button,
+    .btn,
+    label,
+    input {
+        min-height: 44px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        overflow: hidden;
+    }
+}
+
+/* 6) Ultra-small phones polish */
+@media (max-width: 360px) {
+    .question-text {
+        font-size: 14px;
+    }
+
+    .ratings label {
+        padding: 7px 10px;
+    }
+}
+
+/* ===== Hotfix: ratings layout on small screens ===== */
+
+/* Keep five pills on one row, evenly spaced, no wrapping */
+@media (max-width: 760px) {
+    .ratings {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        /* tighter gaps */
+        flex-wrap: nowrap;
+        /* override earlier wrap */
+        justify-items: center;
+        align-items: center;
+    }
+
+    .ratings label {
+        width: 100%;
+        max-width: 64px;
+        /* keep compact buttons */
+        padding: 8px 0;
+        /* vertical pill look */
+        justify-content: center;
+    }
+
+    .ratings label span {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1;
+    }
+
+    .ratings input[type="radio"] {
+        width: 12px;
+        height: 12px;
+        margin-right: 6px;
+    }
+
+    /* Question block padding to match reduced controls */
+    .question {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .question-text {
+        font-size: 15px;
+    }
+}
+
+/* Ultra-small phones: squeeze a bit more */
+@media (max-width: 360px) {
+    .ratings {
+        gap: 8px;
+    }
+
+    .ratings label {
+        max-width: 56px;
+        padding: 7px 0;
+    }
+
+    .ratings input[type="radio"] {
+        width: 11px;
+        height: 11px;
+    }
+
+    .ratings label span {
+        font-size: 13px;
+    }
+}
+
+/* Optional: cleaner pills without visible radio circle */
+@media (max-width: 760px) {
+    .ratings input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .ratings label {
+        border: 1px solid var(--border);
+        background: #f9fbff;
+    }
+
+    .ratings input[type="radio"]:checked+span {
+        background: linear-gradient(180deg, var(--primary), var(--primary-600));
+        color: #fff;
+        border-radius: 999px;
+        padding: 6px 10px;
+        display: inline-block;
+    }
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.input-group label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #222;
+}
+
+.input-group textarea {
+    padding: 12px 14px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    /* user can resize vertically only */
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group textarea:focus {
+    outline: none;
+    border-color: #16ba63;
+    /* your brand green */
+    box-shadow: 0 0 6px rgba(22, 186, 99, 0.4);
+}

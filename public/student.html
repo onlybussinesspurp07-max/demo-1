@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Nunito:wght@800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="static/css/student.css">
+
+</head>
+
+<body>
+
+  <div class="login-container">
+    <form id="loginForm">
+      <h2>STUDENT LOGIN</h2>
+      <p>Please enter your PRN Number and Password!</p>
+      <input id='PRN_num' class="inp" type="text" placeholder="PRN Number" required>
+      <input id='loginPass' class="inp" type="password" placeholder="Password" required>
+      <a id="new-reg" href="/student_registration.html">New Registration</a>
+      <br>
+      <br>
+      <button type='submit' class="cta">Login</button>
+      <button class="cta" onclick="location.href = '/'">Back</button>
+    </form>
+  </div>
+  <p id='loginReport'></p>
+
+  <script src="/static/js/student.js"></script>
+</body>
+
+</html>

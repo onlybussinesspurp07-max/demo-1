@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Nunito:wght@800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/studentregistration.css">
+
+  <style>
+    /* Hide OTP fields initially */
+    #otp-section {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .inp {
+      display: block;
+      margin: 8px 0;
+      padding: 10px;
+      width: 100%;
+      max-width: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+    <h2>STUDENT REGISTRATION</h2>
+    <p>All fileds mandatory</p>
+    <p>Please fill in your details to register.</p>
+    <form>
+      <!-- <input name="Full Name" class="inp" type="text" placeholder="Full Name" required> --> <!--No name-->
+      <input name="prn" class="inp" type="text" placeholder="PRN Number" required>
+
+      <div class="grid-inline">
+        <input name="email" class="inp" id="email" type="email" placeholder="Email Address" required> <!--Changing name='Email Address' to just email-->
+        <button id="sendOtpBtn">Send OTP</button>
+      </div>
+      <div id="otp-section" class="grid-inline">
+        <input class="inp optional" id="otp" type="text" placeholder="Enter OTP" required>
+        <button id="verifyOtpBtn">Verify OTP</button>
+      </div>
+
+
+      <input name="password" class="inp" type="password" placeholder="Password" required>
+      <input class="inp optional" type="password" placeholder="Confirm Password" required>
+
+      <br><br>
+
+      <button class="cta" type='submit' id="nextToBranch">Next</button>
+    </form>
+      <button class="cta" onclick="location.href='/student'">Back</button> <!--Changed back button from <form> to outside <form>-->
+
+    <p style="margin-top: 10px;">
+      Already have an account? <a id="new-reg" href="/student">Login here</a>
+    </p>
+  </div>
+
+  <script src="/static/js/studentregistration.js"></script>
+</body>
+
+</html>
